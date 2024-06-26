@@ -32,8 +32,10 @@
       </tfoot>
     </table>
     <% else %>
-      <p> It seems your cart is empty. Click the link below to fill it up! </p>
-      <%= link_to "Check out the products page", products_path %>
+      <div class="alert alert-warning" role="alert">
+        <p> It seems your cart is empty. Click the link below to fill it up! </p>
+        <%= link_to "Check out the products page", products_path %>
+      </div>
     <% end %>
   </div>
 
