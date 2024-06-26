@@ -4,8 +4,8 @@
     <h1>My Cart</h1>
   </header>
 
-  <div class="panel panel-default items">
-    <% if enhanced_cart.length > 0 %>
+  <% if enhanced_cart.length > 0 %>
+    <div class="panel panel-default items">
       <table class="table table-bordered">
         <thead>
           <tr>
@@ -19,41 +19,40 @@
           <% enhanced_cart.each do |item| %>
             <%= render 'item', product: item[:product], quantity: item[:quantity].to_i %>
           <% end %>
-      </tbody>
-      <tfoot>
-        <tr>
-          <th colspan="4">
-            TOTAL:
-          </th>
-          <th>
-            <%= humanized_money_with_symbol cart_subtotal_cents / 100.0 %>
-          </th>
-        </tr>
-      </tfoot>
-    </table>
-    <% else %>
-      <div class="alert alert-warning" role="alert">
-        <p> It seems your cart is empty. Click the link below to fill it up! </p>
-        <%= link_to "Check out the products page", products_path %>
-      </div>
-    <% end %>
-  </div>
-
-  <div class="row">
-    <div class="col-xs-12">
-      <%= form_tag orders_path do %>
-        <script
-          src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-          data-amount="<%= cart_subtotal_cents %>"
-          data-name="Jungle"
-          data-description="Khurram Virani's Jungle Order"
-          data-locale="auto"
-          data-email="kvirani@gmail.com"
-          data-currency="cad">
-        </script>
-      <% end %>
+        </tbody>
+        <tfoot>
+          <tr>
+            <th colspan="4">
+              TOTAL:
+            </th>
+            <th>
+              <%= humanized_money_with_symbol cart_subtotal_cents / 100.0 %>
+            </th>
+          </tr>
+        </tfoot>
+      </table>
     </div>
-  </div>
 
+    <div class="row">
+      <div class="col-xs-12">
+        <%= form_tag orders_path do %>
+          <script
+            src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+            data-amount="<%= cart_subtotal_cents %>"
+            data-name="Jungle"
+            data-description="Khurram Virani's Jungle Order"
+            data-locale="auto"
+            data-email="kvirani@gmail.com"
+            data-currency="cad">
+          </script>
+        <% end %>
+      </div>
+    </div>
+  <% else %>
+    <div class="alert alert-warning" role="alert">
+      <p> It seems your cart is empty. Click the link below to fill it up! </p>
+      <%= link_to "Check out the products page", products_path %>
+    </div>
+  <% end %>
 </section>
