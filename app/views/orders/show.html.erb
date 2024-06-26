@@ -23,6 +23,15 @@
           <%= render "line_item", line_item: line_item %>
         <% end %>
         </tbody>
+        <tfooter>
+        <tr>
+          <th> Total: </th>
+          <th colspan="1"</th>
+          <th> </th>
+          <th> <%= @order.line_items.sum(:quantity) %> </th>
+          <th> <%= humanized_money_with_symbol @order.total_cents / 100.00 %>
+        </tr>
+      </tfooter>
       </table>
   </div>
 
