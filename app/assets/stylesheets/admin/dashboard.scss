@@ -1,0 +1,19 @@
+.admin-dashboard {
+  h1 {
+    margin: 1em;
+  }
+  .main {
+    display: flex;
+    flex-direction: row;
+  }
+  .stat {
+    display: inherit;
+    align-items: baseline;
+    padding: .5em;
+    p {
+      padding: .5em;
+      font-size: 1.5em;
+      color: rgb(96, 96, 96);
+    }
+  }
+}
