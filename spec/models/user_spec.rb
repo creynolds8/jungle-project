@@ -58,4 +58,29 @@ RSpec.describe User, type: :model do
       end
     end
   end
+  describe ".authenticate_with_credentials" do
+    before do
+      @user = User.create(name: "TEST", email: "test@test.com", password: "password", password_confirmation: "password")
+    end
+    it "should do authenticate with correct credentials" do
+      authenticated_user = User.authenticate_with_credentials("test@test.com", "password")
+      expect(authenticated_user).to eq(@user)
+    end
+    it "should authenticate in spite of white space for correct credentials" do
+      authenticated_user = User.authenticate_with_credentials("   test@test.com   ", "password")
+      expect(authenticated_user).to eq(@user)
+    end
+    it "should authenticate in spite of case incorrectness for correct credentials" do
+      authenticated_user = User.authenticate_with_credentials("TEST@tEst.Com", "password")
+      expect(authenticated_user).to eq(@user)
+    end
+    it "should return nil for incorrect password" do
+      authenticated_user = User.authenticate_with_credentials("test@test.com", "WRONG")
+      expect(authenticated_user).to be_nil
+    end
+    it "should fail authentication for non-exsistent email" do
+      authenticated_user = User.authenticate_with_credentials("notvalid@email.com", "password")
+      expect(authenticated_user).to be_nil
+    end
+  end
 end
