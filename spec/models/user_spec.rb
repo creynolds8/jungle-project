@@ -23,6 +23,18 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
       end
+      describe "Password length validation" do
+        it "should give an error is the password is too short" do
+          @user = User.new name: "TEST", email: "test@test.com", password: "TEST", password_confirmation: "TEST"
+          @user.valid?
+          expect(@user.errors.full_messages).to include("Password is too short (minimum is 8 characters)")
+        end
+        it "should give an error is the password is too long" do
+          @user = User.new name: "TEST", email: "test@test.com", password: ">20characterlongpassword", password_confirmation: ">20characterlongpassword"
+          @user.valid?
+          expect(@user.errors.full_messages).to include("Password is too long (maximum is 20 characters)")
+        end
+      end
     end
     describe "Email validation" do
       it "should validate email value" do
@@ -31,7 +43,7 @@ RSpec.describe User, type: :model do
         expect(@user.errors.full_messages).to include("Email can't be blank")
       end
       it "should validate a unique email" do
-        @user1 = User.new name: "TEST", email: "test@test.com", password: "TEST", password_confirmation: "TEST"
+        @user1 = User.new name: "TEST", email: "test@test.com", password: "TESTTEST", password_confirmation: "TESTTEST"
         @user1.save!
         @user2 = User.new name: "TEST", email: "TEst@test.com", password: "TEST", password_confirmation: "TEST"
         @user2.valid?
