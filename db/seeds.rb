@@ -230,6 +230,34 @@ user1 = User.create!({
   password_confirmation: "12345678",
 })
 
+user2 = User.create!({
+  name: "User 2",
+  email: "user2@email.com",
+  password: "12345678",
+  password_confirmation: "12345678",
+})
+
+user3 = User.create!({
+  name: "User 3",
+  email: "user3@email.com",
+  password: "12345678",
+  password_confirmation: "12345678",
+})
+
+user4 = User.create!({
+  name: "User 4",
+  email: "user4@email.com",
+  password: "12345678",
+  password_confirmation: "12345678",
+})
+
+user5 = User.create!({
+  name: "User 5",
+  email: "user5@email.com",
+  password: "12345678",
+  password_confirmation: "12345678",
+})
+
 # Reviews
 
 puts "Re-creating Reviews..."
@@ -239,7 +267,7 @@ Review.destroy_all
 10.times do
   Review.create!(
     product_id: rand(1..10),  # Replace 10 with the maximum product ID in your system
-    user_id: 1,     # Replace 10 with the maximum user ID in your system
+    user_id: rand(1..5),     # Replace 10 with the maximum user ID in your system
     rating: rand(1..5),
     description: Faker::Lorem.paragraph(sentence_count: 2, supplemental: true, random_sentences_to_add: 4)
   )
