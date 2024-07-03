@@ -1,7 +1,9 @@
+<%User.find(review.user_id).name %>
+
 <article class="review">
 
-  <%= review.user_id %>
-  <%= review.description %>
-  <%= review.rating %>
+  <p><%= User.find(review.user_id).name %></p>
+  <p><%= review.description %></p>
+  <p><%= review.rating %>/5</p>
 
 </article>
