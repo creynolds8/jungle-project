@@ -23,6 +23,16 @@
     </div>
   </article>
   <section class="reviews">
+    <% if current_user %>
+      <h3>Leave a review!</h3>
+      <%= form_for [@product, @product.reviews.new] do |f| %>
+        <%= f.label :description %>
+        <%= f.text_field :description %>
+        <%= f.label :rating %>
+        <%= f.select :rating, [1, 2, 3, 4, 5] %>
+        <%= f.submit "Post" %>
+      <% end %>
+    <% end %>
     <article class="review">
       <p>Username</p>
       <p>Review</p>

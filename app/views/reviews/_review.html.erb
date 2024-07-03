@@ -5,5 +5,7 @@
   <p><%= User.find(review.user_id).name %></p>
   <p><%= review.description %></p>
   <p><%= review.rating %>/5</p>
-
+  <% if current_user && review.user_id == current_user.id %>
+    <%= link_to "Delete", [:product, review], method: :delete %>
+  <% end %>
 </article>
