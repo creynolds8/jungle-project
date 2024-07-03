@@ -217,6 +217,34 @@ cat3.products.create!({
   price: 79.99
 })
 
+# Users
+
+puts "Re-creating Users..."
+
+User.destroy_all
+
+user1 = User.create!({
+  name: "User 1",
+  email: "user1@email.com",
+  password: "12345678",
+  password_confirmation: "12345678",
+})
+
+# Reviews
+
+puts "Re-creating Reviews..."
+
+Review.destroy_all
+
+10.times do
+  Review.create!(
+    product_id: rand(1..10),  # Replace 10 with the maximum product ID in your system
+    user_id: 1,     # Replace 10 with the maximum user ID in your system
+    rating: rand(1..5),
+    description: Faker::Lorem.paragraph(sentence_count: 2, supplemental: true, random_sentences_to_add: 4)
+  )
+end
+
 
 puts "DONE!"
 
