@@ -27,15 +27,15 @@
       <h3>Leave a review!</h3>
       <%= form_for [@product, @product.reviews.new] do |f| %>
         <div class="row review">
-          <div class="col-8">
-            <%= f.label :description %>
+          <div class="col-10">
+            <%= f.label :description %> (Optional)
             <%= f.text_area :description %>
           </div>
-          <div class="col">
+          <div class="col rating">
+            <div>
             <%= f.label :rating %>
             <%= f.select :rating, [1, 2, 3, 4, 5] %>
-          </div>
-          <div class="col">
+            </div>
             <%= f.submit "Post", class: "btn btn-success" %>
           </div>
         </div>

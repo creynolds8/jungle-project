@@ -9,8 +9,18 @@
     background-color: rgb(225, 225, 225);
     border: 1px solid;
     border-radius: .25rem;
-    p {
-      margin: 0;
-      padding: 0;
+    
+    textarea {
+      width: 100%;
+    }
+
+    .rating {
+      align-content: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      div {
+        padding-bottom: 1em;
+      }
     }
 }
