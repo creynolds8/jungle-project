@@ -2,6 +2,21 @@
 
 A mini e-commerce application built with Rails 6.1 for purposes of teaching Rails by example.
 
+Jungle is a project that was used to simulate a real-world scenario in which you only have a little time to learn a new language before having to start work on an existing project in that new language. This project involved working on every level of the existing Jungle app, from the database to front-end rendering or implementing a completely new feature. This project also provided the chance to experience bug-fixing in unfamiliar code and to create both unit and end-to-end tests for both new and existing code.
+
+## Features Implented
+
+- Sold Out badge on products with zero stock
+- Admin Security using basic http authentication
+- Category functionality to allow admin users to create new categories
+- User authentication with encrypted passwords
+- Review feature for visitors to view and users to create a review of a product
+- Enhanched My Cart and Order Details UI/UX 
+
+
+
+
+
 ## Setup
 
 1. Run `bundle install` to install dependencies
