@@ -1,11 +1,16 @@
-<%User.find(review.user_id).name %>
-
-<article class="review">
-
-  <p><%= User.find(review.user_id).name %></p>
-  <p><%= review.description %></p>
-  <p><%= review.rating %>/5</p>
-  <% if current_user && review.user_id == current_user.id %>
-    <%= link_to "Delete", [:product, review], method: :delete %>
-  <% end %>
-</article>
+  <div class="row review">
+    <div class="col">
+      <p><%= User.find(review.user_id).name %></p>
+    </div>
+    <div class="col-6">
+      <p><%= review.description %></p>
+    </div>
+    <div class="col">
+      <p><%= review.rating %>/5</p>
+    </div>
+    <% if current_user && review.user_id == current_user.id %>
+      <div class="col">
+        <%= link_to "Delete", [@product, review], method: :delete, class: 'btn btn-xs btn-danger' %>
+      </div>
+    <% end %>
+  </div>

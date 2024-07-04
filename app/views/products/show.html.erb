@@ -22,22 +22,39 @@
       </div>
     </div>
   </article>
-  <section class="reviews">
+  <section class="container">
     <% if current_user %>
       <h3>Leave a review!</h3>
       <%= form_for [@product, @product.reviews.new] do |f| %>
-        <%= f.label :description %>
-        <%= f.text_field :description %>
-        <%= f.label :rating %>
-        <%= f.select :rating, [1, 2, 3, 4, 5] %>
-        <%= f.submit "Post" %>
+        <div class="row review">
+          <div class="col-8">
+            <%= f.label :description %>
+            <%= f.text_area :description %>
+          </div>
+          <div class="col">
+            <%= f.label :rating %>
+            <%= f.select :rating, [1, 2, 3, 4, 5] %>
+          </div>
+          <div class="col">
+            <%= f.submit "Post", class: "btn btn-success" %>
+          </div>
+        </div>
       <% end %>
     <% end %>
-    <article class="review">
-      <p>Username</p>
-      <p>Review</p>
-      <p>Rating</p>
-    </article>
-    <%= render @reviews %>
+    
+      <div class="row review">
+        <div class="col">
+          Username
+        </div>
+        <div class="col-6">
+          Review
+        </div>
+        <div class="col">
+          Rating
+        </div>
+        <div class="col">
+        </div>
+      </div>
+      <%= render @reviews %>
   </section>
 </section>

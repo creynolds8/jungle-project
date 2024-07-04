@@ -11,6 +11,8 @@ class User < ApplicationRecord
     end
   end
 
+  has_many :reviews
+
   validates :name, presence: true
   validates :email, presence: true, uniqueness: { case_sensitive: false }
   validates :password, presence: true, length: { in: 8..20 }

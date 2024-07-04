@@ -264,16 +264,6 @@ puts "Re-creating Reviews..."
 
 Review.destroy_all
 
-10.times do
-  Review.create!(
-    product_id: rand(1..10),  # Replace 10 with the maximum product ID in your system
-    user_id: rand(1..5),     # Replace 10 with the maximum user ID in your system
-    rating: rand(1..5),
-    description: Faker::Lorem.paragraph(sentence_count: 2, supplemental: true, random_sentences_to_add: 4)
-  )
-end
-
-
 puts "DONE!"
 
 
