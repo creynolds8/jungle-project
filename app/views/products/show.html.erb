@@ -9,6 +9,7 @@
       <h1><%= @product.name %></h1>
       <p><%= @product.description %></p>
       <div class="quantity">
+        <span>Average Rating: <%= @rating || 0 %>/5 </span>
         <span><%= @product.quantity %> in stock at </span>
         <span><%= humanized_money_with_symbol @product.price %></span>
       </div>
